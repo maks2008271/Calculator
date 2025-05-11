@@ -1,0 +1,70 @@
+@font-face {
+    font-family: 'Helvetica';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Helvetica'), url('Helvetica.woff') format('woff');
+    }
+
+body {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Helvetica", "Arial", sans-serif;
+    height:100vh;
+    overflow: hidden;
+    background-color: black;
+}
+
+.container {
+    display:grid;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: repeat(6, 100px);
+    gap:7px;
+    font-family: "Helvetica", sans-serif;
+    background-color: black;
+}
+
+.display {
+    display:flex;
+    justify-content: end;
+    align-items: end;
+    font-size:64px;
+    grid-column-start:1;
+    grid-column-end: 5;
+    color:white;
+}
+
+.long-button {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    background-color: red;
+}
+
+.button {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    border:none;
+    color:white;
+    font-size:42px;
+    font-weight: 400;
+    border:none;
+    border-radius: 50%;
+    background-color: rgb(72, 72, 72);
+    cursor:pointer;
+}
+
+.function {
+    background-color: gray;
+    font-size:54px;
+}
+
+.operator {
+    background-color: orange;
+    font-size:64px;
+}
+
+.long-button {
+    border-radius: 48px;
+}
