@@ -1,3 +1,19 @@
+function add(a, b) {
+    return a + b;
+}
+
+function subtract(a, b) {
+    return a - b;
+}
+
+function multiply(a, b) {
+    return a * b;
+}
+
+function divide(a, b) {
+    return a / b;
+}
+
 const display = document.querySelector(".display");
 const operands = document.querySelectorAll(".operand");
 const operators = document.querySelectorAll(".operator");
@@ -58,9 +74,27 @@ equal.addEventListener("click", () => {
         num2 = parseFloat(display.textContent);
 
         if (action === '/' && num2 === 0) {
-            display.textContent = "You can't";
-        }   else {
-            display.textContent = eval(num1 + action + num2);
+            display.textContent = "Error";  // Если делим на 0, выводим "Error"
+        } else {
+            let result;
+            switch (action) {
+                case '+':
+                    result = add(num1, num2);
+                    break;
+                case '-':
+                    result = subtract(num1, num2);
+                    break;
+                case '*':
+                    result = multiply(num1, num2);
+                    break;
+                case '/':
+                    result = divide(num1, num2);
+                    break;
+                default:
+                    result = num2;
+                    break;
+            }
+            display.textContent = result;
         }
 
         num1 = null;
