@@ -37,6 +37,14 @@ clear.addEventListener("click", () => {
     shouldResetDisplay = false;
 })
 
+opposite.addEventListener("click", () => {
+    display.textContent *= -1;
+})
+
+procent.addEventListener("click", () => {
+    display.textContent /= 100
+})
+
 operands.forEach(operand => {
     operand.addEventListener("click", () => {
         if (shouldResetDisplay || display.textContent == '0') {
@@ -50,18 +58,44 @@ operands.forEach(operand => {
 
 operators.forEach(operator => {
     operator.addEventListener("click", () => {
-        if (num1 !== null) {
+        if (num1 !== null && action !== null) {
             num2 = parseFloat(display.textContent);
-            num1 = eval(num1 + action + num2);
-            display.textContent = num1;
-        }   else {
-                num1 = parseFloat(display.textContent);
+
+            let result;
+            switch (action) {
+                case '+':
+                    result = add(num1, num2);
+                    break;
+                case '-':
+                    result = subtract(num1, num2);
+                    break;
+                case '*':
+                    result = multiply(num1, num2);
+                    break;
+                case '/':
+                    if (num2 === 0) {
+                        result = "Error";
+                    } else {
+                        result = divide(num1, num2);
+                    }
+                    break;
+                default:
+                    result = num2;
+                    break;
+            }
+
+            num1 = result;
+            display.textContent = result;
+
+        } else {
+            num1 = parseFloat(display.textContent);
         }
 
         action = operator.textContent;
+
         shouldResetDisplay = true;
-    })
-}) 
+    });
+});
 
 decimal.addEventListener("click", () => {
     if (!display.textContent.includes(".")) {
